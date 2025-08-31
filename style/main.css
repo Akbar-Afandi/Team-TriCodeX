@@ -1,10 +1,22 @@
 .hero {
   display: grid;
   grid-template-rows: .4fr .6fr;
-  height: 10rem;
+  row-gap: 1rem;
+  height: 14rem;
   padding: 3rem 0 5rem 0;
   text-align: center;
   background-color: pink;
+}
+
+.hero-header {
+  font-size: 2.5rem;
+  font-weight: 570;
+}
+
+.hero-header span {
+  color: #A0522D;
+  font-size: 1.5rem;
+  font-weight: 520;
 }
 
 .hero-main img {
@@ -17,4 +29,23 @@
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
+  color: #5C5856;
+}
+
+.hero-main-text {
+  margin-left: 2rem;
+}
+
+.hero-main-text p {
+  text-align: left;
+}
+
+.hero-main-text button{
+  background-color: #B8860B;
+  color: #F2F2F2;
+  margin: 1rem 1rem;
+  padding: .5rem .7rem;
+  border-radius: .5rem;
+  border: none;
 }
