@@ -6,31 +6,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const tipsaksi = document.getElementById("navtisi")
   const galeri = document.getElementById("navgaleri")
   const tim = document.getElementById("navtim")
-  const suit = document.getElementById("navkuis")
-  const lNavGame = document.getElementById("listnavgame")
-  const arrowNavGame = document.getElementById("navcepron")
-  const pGame = document.getElementById("pNavGame")
-  const navSortir = document.getElementById("navbudaya")
+  const suit = document.getElementById("navsuit")
   
-  pGame.addEventListener("click", () => {
-    lNavGame.classList.toggle("min")
-    lNavGame.classList.toggle("max")
-  })
-  
-  pGame.addEventListener("click", () => {
-    navcepron.classList.toggle("muter")
-  })
   
   bar.addEventListener("click", () => {
     menu.classList.remove("ilang")
     menu.classList.add("muncul")
-    bar.style.opacity = "0"
   })
   
   exit.addEventListener("click", () => {
     menu.classList.remove("muncul")
     menu.classList.add("ilang")
-    bar.style.opacity = "1"
   })
   
   home.addEventListener("click", () => {
@@ -51,9 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
   
   suit.addEventListener("click", () => {
     window.location.assign("suit.html")
-  })
-  
-  navsortir.addEventListener("click", () => {
-    window.location.assign("game.html")
   })
 })
