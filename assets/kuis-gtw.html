@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kuis Budaya Nusantara</title>
+  <style>
+    body {
+      background: #F5F5DC;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: #2B2B2B;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+
+    header {
+      background: #8B5E3C;
+      padding: 20px;
+      font-size: 2rem;
+      font-weight: bold;
+      color: #D4AF37;
+      font-family: sans-serif;
+      letter-spacing: 2px;
+    }
+
+    .quiz-container {
+      max-width: 600px;
+      margin: 40px auto;
+      background: white;
+      border: 3px solid #D4AF37;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: 0 4px 6px rgba(139, 94, 60, 0.3);
+    }
+
+    .question {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+    }
+
+    .options button {
+      background: #B7410E;
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      margin: 10px;
+      font-size: 1rem;
+      color: white;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .options button:hover {
+      background: #F0C419;
+      color: #2B2B2B;
+    }
+
+    .timer {
+      border: 5px solid #3B7A57;
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      line-height: 70px;
+      margin: 20px auto;
+      font-weight: bold;
+      font-size: 1.4rem;
+      color: #3B7A57;
+    }
+
+    #score {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>Kuis Budaya Nusantara</header>
+
+  <div class="quiz-container">
+    <div id="timer" class="timer">10</div>
+    <div id="question" class="question">Memuat pertanyaan...</div>
+    <div class="options" id="options"></div>
+    <div id="score" class="hidden"></div>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "Alat musik tradisional angklung berasal dari daerah?",
+        options: ["Bali", "Jawa Barat", "Sumatra Utara", "Kalimantan Timur"],
+        answer: "Jawa Barat"
+      },
+      {
+        question: "Rumah adat Tongkonan berasal dari?",
+        options: ["Toraja", "Minang", "Batak", "Bali"],
+        answer: "Toraja"
+      },
+      {
+        question: "Tari Kecak berasal dari daerah mana?",
+        options: ["Jawa Tengah", "Bali", "NTT", "Sumatra Barat"],
+        answer: "Bali"
+      }
+    ];
+
+    let currentQuestion = 0;
+    let score = 0;
+    let timer;
+    let timeLeft = 10;
+
+    function showQuestion() {
+      if (currentQuestion >= questions.length) {
+        document.getElementById("question").textContent = "Kuis selesai!";
+        document.getElementById("options").innerHTML = "";
+        document.getElementById("timer").classList.add("hidden");
+        document.getElementById("score").textContent = `Skor Akhir: ${score}/${questions.length}`;
+        document.getElementById("score").classList.remove("hidden");
+        return;
+      }
+
+      timeLeft = 10;
+      document.getElementById("timer").textContent = timeLeft;
+      startTimer();
+
+      const q = questions[currentQuestion];
+      document.getElementById("question").textContent = q.question;
+      const optionsDiv = document.getElementById("options");
+      optionsDiv.innerHTML = "";
+
+      q.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.textContent = option;
+        btn.onclick = () => {
+          clearInterval(timer);
+          if (option === q.answer) score++;
+          currentQuestion++;
+          showQuestion();
+        };
+        optionsDiv.appendChild(btn);
+      });
+    }
+
+    function startTimer() {
+      timer = setInterval(() => {
+        timeLeft--;
+        document.getElementById("timer").textContent = timeLeft;
+        if (timeLeft === 0) {
+          clearInterval(timer);
+          currentQuestion++;
+          showQuestion();
+        }
+      }, 1000);
+    }
+    showQuestion();
+  </script>
+
+</body>
+</html>
