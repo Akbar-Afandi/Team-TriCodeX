@@ -3,7 +3,7 @@
   grid-template-rows: .4fr .6fr;
   row-gap: 1rem;
   max-height: 20rem;
-  padding: 3rem 0 3rem 0;
+  padding: 0 0 5rem 0;
   text-align: center;
   background-color: pink;
 }
@@ -48,6 +48,7 @@
   padding: .5rem .7rem;
   border-radius: .5rem;
   border: none;
+  align-items: start;
 }
 
 /* pengantar */
@@ -90,3 +91,7 @@
   font-weight: 520;
   margin-bottom: 1.5rem;
 }
+
+/* terakhir */
+
+.budaya-card
